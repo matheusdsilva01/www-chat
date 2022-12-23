@@ -42,9 +42,12 @@ export const Button = styled.button`
     color: ${theme.colors["text-white"]};
     padding: ${theme.spacings.sm} 0;
     font-weight: ${theme.font.weights[700]};
-    font-size: ${theme.font.sizes.xl};
+    font-size: ${theme.font.sizes.lg};
     border-radius: ${theme.border.md};
     background-color: ${theme.colors.secondary};
+    &:disabled {
+      opacity: ${theme.opacities.translucent};
+    }
   `};
 `;
 
@@ -58,7 +61,12 @@ export const Input = styled.input`
     color: ${theme.colors["text-white"]};
     padding: ${theme.spacings.sm} ${theme.spacings.lg};
     border-radius: ${theme.border.xs};
-    ::placeholder {
+
+    &:disabled {
+      opacity: ${theme.opacities.translucent};
+    }
+
+    &::placeholder {
       color: ${theme.colors["text-contrast-low"]};
     }
   `}

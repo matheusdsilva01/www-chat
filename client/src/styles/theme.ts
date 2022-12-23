@@ -6,7 +6,8 @@ import {
   zIndices,
   transitions,
   sizes,
-} from './tokens';
+  opacities,
+} from "./tokens";
 
 export default {
   grid: sizes,
@@ -22,4 +23,5 @@ export default {
   spacings: spacings,
   indices: zIndices,
   transition: transitions,
+  opacities,
 } as const;
