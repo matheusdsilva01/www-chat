@@ -1,11 +1,10 @@
-import { io } from "socket.io-client";
+import Home from "layouts/home/home.layout";
 
-const socket = io("http://localhost:3001")
-socket.connect()
 function App() {
+
   return (
     <div className="App">
-      <h1>hello world</h1>
+      <Home />
     </div>
   );
 }
