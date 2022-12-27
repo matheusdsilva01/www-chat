@@ -1,29 +1,35 @@
-import { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
+import { ChatContext } from 'context/ChatContext';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { socket } from 'socket';
 import * as s from './home.layout.styles';
-
-const socket = io("http://localhost:3001")
 
 const Home = () => {
     const [username, setUsername] = useState("");
     const [contact, setContact] = useState("");
+    const navigate = useNavigate();
     const [logged, setLogged] = useState(false);
-    const [room, setRoom] = useState(12354);
+    const { setRoom, setUsername: changeUsername } = useContext(ChatContext);
 
     useEffect(() => {
-        console.log("here");
-        logged && socket.on("return_messages", data => console.log(data))
-    }, [logged])
+        logged && socket.on("return_messages", data => {
+            setRoom(data.room)
+        })
+
+    }, [logged, setRoom])
 
     const login = () => {
         if (!!username) {
-            setLogged(true)
+            setLogged(true);
+            changeUsername(username)
         }
     }
 
     const joinRoom = () => {
         if (!!contact) {
-            socket.emit("join_chat", room)
+            const room = [username, contact];
+            socket.emit("join_chat", room);
+            navigate("/chat");
         }
     }
 

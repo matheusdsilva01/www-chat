@@ -1,11 +1,9 @@
-import Home from "layouts/home/home.layout";
+import Routers from "routes";
 
 function App() {
 
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Routers />
   );
 }
 

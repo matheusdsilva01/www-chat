@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { Socket } from 'socket.io-client';
+import { ChatContext } from 'context/ChatContext';
+import { useContext, useEffect, useState } from 'react';
+import { socket } from 'socket';
 
-type ChatProps = {
-    socket: Socket;
-    username: string;
-    room: number
-}
 
-const Chat = ({ socket, username, room }: ChatProps) => {
+const Chat = () => {
     const [message, setMessage] = useState("");
-    const [listMessages, setListMessages] = useState<string[]>([])
+    const { room, username } = useContext(ChatContext);
 
     useEffect(() => {
         socket.on("return_messages", (data) => console.log(data))
-    }, [socket])
+    }, [])
 
     useEffect(() => {
         socket.on("receive_message", (data: any) => {
             console.log(data)
         })
-    }, [socket])
+    }, [])
 
     const sendMessage = () => {
         const time = `${new Date().getHours()}:${String(new Date().getMinutes()).padStart(2, "0")} `;
@@ -27,7 +23,7 @@ const Chat = ({ socket, username, room }: ChatProps) => {
             message,
             time,
             username,
-            room: 12354
+            room
         }
         socket.emit("send_message", dataMessage)
     }
