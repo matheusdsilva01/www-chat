@@ -8,13 +8,11 @@ import { encrypt } from "./util/encrypt";
 const app = express();
 app.use(cors);
 const port = process.env.PORT || 3001;
-const origin = process.env.ORIGIN || "http://localhost:3000/";
 
 const serverHttp = http.createServer(app);
 
 const io = new Server(serverHttp, {
   cors: {
-    origin: origin,
     methods: ["GET", "POST"],
   },
 });
