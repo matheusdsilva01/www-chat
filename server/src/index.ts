@@ -7,6 +7,7 @@ import { encrypt } from "./util/encrypt";
 
 const app = express();
 app.use(cors);
+const port = process.env.PORT || 3001;
 
 const serverHttp = http.createServer(app);
 
@@ -22,7 +23,7 @@ const createChat = (room: string) => {
     room,
     messages: [
       {
-        message: "Hello",
+        message: "Welcome to WWW-chat",
         time: "21:09",
         author: "Matheus",
       },
@@ -55,5 +56,5 @@ io.on("connection", (socket) => {
     console.log("Closed connection", socket.id);
   });
 });
-serverHttp.listen(3001, () => console.log("Server is running"));
+serverHttp.listen(port, () => console.log("Server is running"));
 export { io };
