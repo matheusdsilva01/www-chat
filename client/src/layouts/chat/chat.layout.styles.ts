@@ -50,12 +50,13 @@ export const ChatHeader = styled.div`
 export const ChatBody = styled.div`
   width: 100%;
   height: 100%;
+  min-height: 618px;
   padding: 0 10px;
   border: 1px solid #263238;
   position: relative;
   overflow: auto;
   ${({ theme }) => css`
-    background-color: ${theme.colors["black-02"]};
+    background-color: ${theme.colors.primary};
   `}
 `;
 
