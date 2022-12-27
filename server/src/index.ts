@@ -24,7 +24,7 @@ const createChat = (room: string) => {
       {
         message: "Hello",
         time: "21:09",
-        username: "Matheus",
+        author: "Matheus",
       },
     ],
   };

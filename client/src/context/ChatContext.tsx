@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 
-type RecentsMoviesContextType = {
+type ChatContextType = {
     username: string;
     room: string;
     setUsername: (user: string) => void;
@@ -10,7 +10,7 @@ type RecentsMoviesContextType = {
 type ChatContextProps = {
     children: ReactNode;
 }
-export const ChatContext = createContext({} as RecentsMoviesContextType);
+export const ChatContext = createContext({} as ChatContextType);
 
 
 export const ChatContextProvider = ({ children }: ChatContextProps) => {

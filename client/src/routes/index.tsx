@@ -1,4 +1,4 @@
-import Chat from "components/Chat";
+import Chat from "layouts/chat/Chat.layout";
 import { ChatContextProvider } from "context/ChatContext";
 import Home from "layouts/home/home.layout";
 import { BrowserRouter, Route, Routes } from "react-router-dom"

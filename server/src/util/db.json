@@ -5,17 +5,17 @@
       {
         "message": "Hello",
         "time": "21:09",
-        "username": "Matheus"
+        "author": "Matheus"
       },
       {
         "message": "Hi, how are you?",
         "time": "21:10",
-        "username": "Matheus"
+        "author": "Matheus"
       },
       {
         "message": "Good, and you?",
         "time": "21:15",
-        "username": "Matheus"
+        "author": "Matheus"
       }
     ]
   },
@@ -25,17 +25,17 @@
       {
         "message": "Hello",
         "time": "21:09",
-        "username": "Matheus"
+        "author": "Matheus"
       },
       {
         "message": "Hi, how are you?",
         "time": "21:10",
-        "username": "Matheus"
+        "author": "Matheus"
       },
       {
         "message": "Good, and you?",
         "time": "21:15",
-        "username": "Matheus"
+        "author": "Matheus"
       }
     ]
   }
