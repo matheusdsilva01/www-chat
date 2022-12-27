@@ -2,27 +2,11 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 import { Server } from "socket.io";
+import db from "./util/db.json";
+import { encrypt } from "./util/encrypt";
 
 const app = express();
 app.use(cors);
-
-const messages = [
-  {
-    message: "Hello",
-    time: "21:09",
-    username: "Matheus",
-  },
-  {
-    message: "Hi, how are you?",
-    time: "21:10",
-    username: "Matheus",
-  },
-  {
-    message: "Good, and you?",
-    time: "21:15",
-    username: "Matheus",
-  },
-];
 
 const serverHttp = http.createServer(app);
 
@@ -33,13 +17,36 @@ const io = new Server(serverHttp, {
   },
 });
 
+const createChat = (room: string) => {
+  let chat = {
+    room,
+    messages: [
+      {
+        message: "Hello",
+        time: "21:09",
+        username: "Matheus",
+      },
+    ],
+  };
+  db.push(chat);
+};
+
 io.on("connection", (socket) => {
   socket.on("join_chat", (data) => {
-    socket.join(data);
-    socket.emit("return_messages", messages);
+    const room = encrypt(data);
+    const roomExists = db.filter((chat) => chat.room === room).length > 0;
+    console.log(room);
+    socket.join(room);
+    if (!roomExists) {
+      createChat(room);
+    }
+
+    const chat = db.find((chat) => chat.room === room);
+    socket.emit("return_messages", chat);
   });
 
   socket.on("send_message", (data) => {
+    console.log(data);
     socket.to(data.room).emit("receive_message", data);
   });
 

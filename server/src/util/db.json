@@ -1,0 +1,42 @@
+[
+  {
+    "room": "094bdc2abd1aa5cabbea313aebbd1753971123b5b6adb2a278c5b585cac394f5",
+    "messages": [
+      {
+        "message": "Hello",
+        "time": "21:09",
+        "username": "Matheus"
+      },
+      {
+        "message": "Hi, how are you?",
+        "time": "21:10",
+        "username": "Matheus"
+      },
+      {
+        "message": "Good, and you?",
+        "time": "21:15",
+        "username": "Matheus"
+      }
+    ]
+  },
+  {
+    "room": "cec955a85044a90f37e1fba0ce9db47b8a723b39083a94b652dd6a049b768568",
+    "messages": [
+      {
+        "message": "Hello",
+        "time": "21:09",
+        "username": "Matheus"
+      },
+      {
+        "message": "Hi, how are you?",
+        "time": "21:10",
+        "username": "Matheus"
+      },
+      {
+        "message": "Good, and you?",
+        "time": "21:15",
+        "username": "Matheus"
+      }
+    ]
+  }
+]
