@@ -116,7 +116,7 @@ export const Author = styled.p`
   font-weight: bold;
 `;
 
-export const ChatFooter = styled.div`
+export const ChatFooter = styled.form`
   display: flex;
   position: relative;
   bottom: 0;
@@ -130,11 +130,14 @@ export const Input = styled.input`
   flex: 85%;
   border: 0;
   padding: 15px;
-  border-right: 1px dotted #607d8b;
   outline: none;
 
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.md};
+    &::placeholder {
+      color: ${theme.colors["text-contrast-low"]};
+      opacity: ${theme.opacities.translucent};
+    }
   `}
 `;
 

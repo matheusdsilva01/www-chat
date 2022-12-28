@@ -1,5 +1,5 @@
 import { ChatContext } from 'context/ChatContext';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { FormEvent, useContext, useEffect, useRef, useState } from 'react';
 import { socket } from 'socket';
 import * as s from "./chat.layout.styles";
 
@@ -26,17 +26,14 @@ const Chat = () => {
     }, [])
 
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, [listMessages])
-
-    useEffect(() => {
         socket.on("receive_message", (data: Message) => {
             setListMessages(oldMessages => [...oldMessages, data])
         })
         return () => { socket.removeListener('receive_message') }
     }, [])
 
-    const sendMessage = () => {
+    const sendMessage = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         const time = `${new Date().getHours()}:${String(new Date().getMinutes()).padStart(2, "0")} `;
         const dataMessage = {
             message,
@@ -68,9 +65,9 @@ const Chat = () => {
                         ))}
                     </s.MessagesContainer>
                 </s.ChatBody>
-                <s.ChatFooter>
-                    <s.Input type="text" onChange={(event) => setMessage(event.target.value)} />
-                    <s.ChatButtonSubmit onClick={sendMessage}><svg viewBox="0 0 24 24" height="24" width="24" preserveAspectRatio="xMidYMid meet" className="" version="1.1" x="0px" y="0px" enable-background="new 0 0 24 24" xmlSpace="preserve"><path fill="#fff" d="M1.101,21.757L23.8,12.028L1.101,2.3l0.011,7.912l13.623,1.816L1.112,13.845 L1.101,21.757z"></path></svg></s.ChatButtonSubmit>
+                <s.ChatFooter onSubmit={sendMessage}>
+                    <s.Input type="text" placeholder='Type...' value={message} onChange={(event) => setMessage(event.target.value)} />
+                    <s.ChatButtonSubmit disabled={!message} type="submit" ><svg viewBox="0 0 24 24" height="24" width="24" preserveAspectRatio="xMidYMid meet" className="" version="1.1" x="0px" y="0px" enable-background="new 0 0 24 24" xmlSpace="preserve"><path fill="#fff" d="M1.101,21.757L23.8,12.028L1.101,2.3l0.011,7.912l13.623,1.816L1.112,13.845 L1.101,21.757z"></path></svg></s.ChatButtonSubmit>
                 </s.ChatFooter>
             </s.ContainerChat>
         </s.Container>
