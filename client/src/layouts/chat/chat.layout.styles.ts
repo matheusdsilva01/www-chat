@@ -14,13 +14,13 @@ export const Container = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors["black-01"]};
     @media (max-width: ${theme.grid["container-lg"]}) {
-      padding: 0 ${theme.spacings["md"]};
+      padding: 10px ${theme.spacings["md"]};
     }
   `};
 `;
 
 export const ContainerChat = styled.div`
-  min-height: 700px;
+  height: 100%;
   max-height: 700px;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@ export const ChatHeader = styled.div`
 export const ChatBody = styled.div`
   width: 100%;
   height: 100%;
-  min-height: 618px;
+  max-height: 618px;
   padding: 0 10px;
   border: 1px solid #263238;
   position: relative;
@@ -145,12 +145,7 @@ export const ChatButtonSubmit = styled.button`
   outline: none;
   background: transparent;
   cursor: pointer;
-
-  ${({ theme }) => css`
-    color: ${theme.colors["white-01"]};
-    font-size: ${theme.font.sizes.xl};
-  `}
   &:hover {
-    text-shadow: 0 0 15px #000;
+    filter: drop-shadow(0 0 5px #000);
   }
 `;
